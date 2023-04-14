@@ -25,65 +25,102 @@ sudo apt install git
 ```
 
 ## 1Password
+
 ```bash
-wget https://downloads.1password.com/linux/debian/amd64/stable/1password-latest.deb -O 1password.deb`
+wget https://downloads.1password.com/linux/debian/amd64/stable/1password-latest.deb -O 1password.deb
 ```
+
 ```bash
-sudo apt install curl`
+sudo apt install curl
 ```
+
 ```bash
-sudo apt install gnupg2`
+sudo apt install gnupg2
 ```
+
 ```bash
-sudo dpkg -i 1password.deb`
+sudo dpkg -i 1password.deb
 ```
 
 ## zsh and Oh-My-ZSH
+
+Verify that zsh is installed or not
+
 ```bash
-`zsh --version` Verify that zsh is installed or not
+zsh --version 
 ```
+
 ```bash
-`sudo apt install zsh`
+sudo apt install zsh
 ```
+
+Return which shell is the default one
+
 ```bash
-`echo $SHELL` return which shell is the default one
+echo $SHELL 
 ```
+
+Change the default shell to zsh
+
 ```bash
-`chsh -s $(which zsh)` changed the default shell to zsh
+chsh -s $(which zsh) 
 ```
 
-:exclamation: log out of current session and log back in
+:exclamation: **Log out of current session and log back in**
 
-`sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)"` Install Oh My ZSH
+Install Oh My ZSH
 
-------------
-Install Powerlevel10k
-
-`git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k`
-
-`exec zsh` Restart ZSH
-
-`p10k configure` for config wizard
-
------ 
-Install Terraform
-
-`sudo apt-get update && sudo apt-get install -y gnupg software-properties-common`
-
-`wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg`
-
-`sudo gpg --no-default-keyring --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg --fingerprint`
-
-`echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list`
-
-`sudo apt update`
-
-`sudo apt install terraform`
-
----
-Install GitHub CLI
-
+```bash
+sh -c "$(wget https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh -O -)" 
 ```
+
+## Powerlevel10k
+
+```bash
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
+```
+
+Restart ZSH
+
+```bash
+exec zsh 
+```
+
+For the config wizard
+
+```bash
+p10k configure 
+```
+
+## Terraform
+
+```bash
+sudo apt-get update && sudo apt-get install -y gnupg software-properties-common
+```
+
+```bash
+wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor | sudo tee /usr/share/keyrings/hashicorp-archive-keyring.gpg
+```
+
+```bash
+sudo gpg --no-default-keyring --keyring /usr/share/keyrings/hashicorp-archive-keyring.gpg --fingerprint
+```
+
+```bash
+echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
+```
+
+```bash
+sudo apt update
+```
+
+```bash
+sudo apt install terraform
+```
+
+## GitHub CLI
+
+```bash
 type -p curl >/dev/null || (sudo apt update && sudo apt install curl -y)
 curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo dd of=/usr/share/keyrings/githubcli-archive-keyring.gpg \
 && sudo chmod go+r /usr/share/keyrings/githubcli-archive-keyring.gpg \
@@ -92,41 +129,47 @@ curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo 
 && sudo apt install gh -y
 ```
 
----
-Install gcloud CLI
+## Google Cloud SDK
 
-`sudo apt-get install apt-transport-https ca-certificates gnupg`
+```bash
+sudo apt-get install apt-transport-https ca-certificates gnupg
+```
 
-`echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list`
+```bash
+echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+```
 
-`curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -`
+```bash
+curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
+```
 
-`sudo apt-get update && sudo apt-get install google-cloud-cli`
+```bash
+sudo apt-get update && sudo apt-get install google-cloud-cli
+```
 
----
-Docker Installation
+## Docker Installation
 
 make sure old versions are not installed
-`sudo apt-get remove docker docker-engine docker.io containerd runc`
+
+```bash
+sudo apt-get remove docker docker-engine docker.io containerd runc
+```
 
 Installing pre-req
 
-```
-sudo apt-get update
-sudo apt-get install \
-    ca-certificates \
-    curl \
-    gnupg
+```bash
+sudo apt-get update && sudo apt-get install ca-certificates curl gnupg -y
 ```
 
 GPG Key and Repo setup
-```
+
+```bash
 sudo install -m 0755 -d /etc/apt/keyrings
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
 sudo chmod a+r /etc/apt/keyrings/docker.gpg
 ```
 
-```
+```bash
 echo \
   "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
   "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \
@@ -135,36 +178,36 @@ echo \
 
 installation
 
-```
+```bash
 sudo apt-get update
+```
 
+```bash
 sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+```
 
+```bash
 docker --version
 ```
 
-use as non-root user
+Use as non-root user
 
-`
+```bash
 sudo groupadd docker
-`
+```
 
-`
+```bash
 sudo usermod -aG docker $USER
-`
-
-----
-
-NODEJS
-
-```
-curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash - &&\
-sudo apt-get install -y nodejs
 ```
 
-or 
+## NodeJS NPM & NVM
 
-to install NVM
+```bash
+curl -fsSL https://deb.nodesource.com/setup_19.x | sudo -E bash - && sudo apt-get install -y nodejs
 ```
+
+or to install it via NVM
+
+```bash
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.3/install.sh | bash
 ```
