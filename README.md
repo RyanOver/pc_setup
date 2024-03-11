@@ -132,19 +132,15 @@ curl -fsSL https://cli.github.com/packages/githubcli-archive-keyring.gpg | sudo 
 ## Google Cloud SDK
 
 ```bash
-sudo apt-get install apt-transport-https ca-certificates gnupg
+curl -O https://dl.google.com/dl/cloudsdk/channels/rapid/downloads/google-cloud-cli-467.0.0-linux-x86_64.tar.gz
 ```
 
 ```bash
-echo "deb [signed-by=/usr/share/keyrings/cloud.google.gpg] https://packages.cloud.google.com/apt cloud-sdk main" | sudo tee -a /etc/apt/sources.list.d/google-cloud-sdk.list
+tar -xf google-cloud-cli-467.0.0-linux-x86_64.tar.gz
 ```
 
 ```bash
-curl https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key --keyring /usr/share/keyrings/cloud.google.gpg add -
-```
-
-```bash
-sudo apt-get update && sudo apt-get install google-cloud-cli
+./google-cloud-sdk/install.sh
 ```
 
 ## Docker Installation
