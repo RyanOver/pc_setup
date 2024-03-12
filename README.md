@@ -18,6 +18,36 @@ wget https://go.microsoft.com/fwlink/?LinkID=760868 -O code.deb
 sudo dpkg -i code.deb
 ```
 
+### VS Code settings
+
+```JSON
+{
+  "telemetry.enableTelemetry": false,
+  "telemetry.enableCrashReporter": false,
+  "editor.minimap.enabled": false,
+  "terminal.integrated.fontFamily": "MesloLGS NF",
+  "editor.mouseWheelZoom": true,
+  "terminal.integrated.fontSize": 12,
+  "terminal.integrated.mouseWheelZoom": true,
+  "terminal.integrated.cursorStyle": "line",
+  "workbench.colorTheme": "One Dark Pro Mix",
+  "workbench.iconTheme": "eq-material-theme-icons-light",
+  "workbench.productIconTheme": "material-product-icons",
+  "files.autoSave": "afterDelay",
+  "editor.fontLigatures": true,
+  "editor.fontFamily": "FiraCode Nerd Font",
+  "editor.tabSize": 2,
+  "editor.smoothScrolling": true,
+  "editor.wordWrap": "on",
+  "editor.cursorBlinking": "expand",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "terminal.integrated.copyOnSelection": true,
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.rightClickBehavior": "paste",
+  "terminal.integrated.smoothScrolling": true
+}
+```
+
 ## Git
 
 ```bash
